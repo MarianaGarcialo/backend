@@ -8,7 +8,23 @@ const router = require("./routes");
 dotenv.config();
 
 const app = express();
+const allowedOrigins = [
+  'http://localhost:4200',
+  'https://constitcionfeminixta.vercel.app'
+];
 
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Permitir solicitudes sin origen (como las de herramientas de desarrollo)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Origen no permitido por CORS'));
+    }
+  },
+  credentials: true
+};
 // CORS solo permite conexión desde el frontend en localhost:4200
 app.use(cors({
   origin: 'http://localhost:4200'
