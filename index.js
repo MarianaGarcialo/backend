@@ -26,9 +26,7 @@ const corsOptions = {
   credentials: true
 };
 // CORS solo permite conexión desde el frontend en localhost:4200
-app.use(cors({
-  origin: 'http://localhost:4200'
-}));
+app.use(corsOptions);
 
 app.use(express.json());
 
