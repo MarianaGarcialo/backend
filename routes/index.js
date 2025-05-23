@@ -48,7 +48,6 @@ fs.readdirSync(pathRouter).filter((file) => {
 
 })
 
-router.use('/public/images', express.static(path.resolve('./storage')));
 
 
 
